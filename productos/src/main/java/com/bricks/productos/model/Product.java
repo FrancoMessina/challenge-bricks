@@ -16,9 +16,7 @@ public class Product {
     private BigDecimal price;
     private int stock;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-
-    // Getters y setters
 }
