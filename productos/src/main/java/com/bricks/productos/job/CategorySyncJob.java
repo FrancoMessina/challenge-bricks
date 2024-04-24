@@ -1,13 +1,15 @@
 package com.bricks.productos.job;
 
 import com.bricks.productos.DTO.CategoryDTO;
+import com.bricks.productos.apiExterna.ApiClient;
 import com.bricks.productos.model.Category;
 import com.bricks.productos.repository.ICategoryRepository;
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,6 +18,11 @@ public class CategorySyncJob {
 
     @Autowired
     private ICategoryRepository categoryRepository;
+
+    @Autowired
+    private ApiClient apiClient;
+
+    private static final Logger logger = LoggerFactory.getLogger(CategorySyncJob.class);
     @PostConstruct
     public void init() {
         // Ejecutar el método de sincronización al iniciar el proyecto
@@ -23,21 +30,16 @@ public class CategorySyncJob {
         this.syncCategoriesFromApi();
     }
 
-    @Scheduled(cron = "0 0 */2 * * *") // Ejecutar cada 2 horas
+    @Scheduled(cron = "0 0 */2 * * *") // Ejecutar cada 2 horas // cambiar este cron manualemente
     public void syncCategoriesFromApi() {
-        String apiUrl = "https://api.develop.bricks.com.ar/loyalty/category/producer";
-        RestTemplate restTemplate = new RestTemplate();
+        List<CategoryDTO> categories = apiClient.fetchDataFromApiBricks();
 
-        // Hago GET a la API para  mapear directamente a una lista de CategoryDTO
-        List<CategoryDTO> categories = List.of(restTemplate.getForObject(apiUrl, CategoryDTO[].class));
-
-        if (!categories.isEmpty()) { // Esto lo hago por si  hay una falla en la request
-            // Eliminar todas las categorías existentes y guardar las nuevas
-            categoryRepository.deleteAllInBatch(); // Eliminar todas las categorías en una sola consulta
+        if (!categories.isEmpty()) {
+            categoryRepository.deleteAllInBatch();
             categoryRepository.saveAll(categories.stream().map(this::mapToCategory).collect(Collectors.toList()));
-            System.out.println("Categorías sincronizadas correctamente desde la API."); // Hago estos system, pero en un proyecto real serian logs.
+            logger.info("Categorías sincronizadas correctamente desde la API.");
         } else {
-            System.out.println("No se encontraron categorías en la API.");
+            logger.warn("No se encontraron categorías en la API.");
         }
     }
 
