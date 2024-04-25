@@ -1336,3 +1336,149 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 13:50:03.851 [http-nio-8082-exec-7] WARN  c.b.p.controller.ProductController - No se encontró ningún producto con el ID: 1
 13:50:27.946 [http-nio-8082-exec-10] INFO  c.b.p.controller.ProductController - Obteniendo producto con ID: 1
 13:50:39.918 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+19:08:10.460 [restartedMain] INFO  c.b.productos.ProductosApplication - Starting ProductosApplication using Java 17.0.4.1 with PID 13824 (C:\Users\franc\OneDrive\Escritorio\challenge-bricks\productos\target\classes started by franc in C:\Users\franc\OneDrive\Escritorio\challenge-bricks\productos)
+19:08:10.468 [restartedMain] INFO  c.b.productos.ProductosApplication - No active profile set, falling back to 1 default profile: "default"
+19:08:10.558 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+19:08:10.559 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+19:08:11.968 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:08:12.196 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 208 ms. Found 2 JPA repository interfaces.
+19:08:14.096 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+19:08:14.108 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+19:08:14.112 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:08:14.112 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+19:08:14.288 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:08:14.291 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3730 ms
+19:08:14.347 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:08:14.850 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:ProductoDB user=ADMIN
+19:08:14.854 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:08:14.871 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:ProductoDB'
+19:08:15.128 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:08:15.274 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.24.Final
+19:08:15.278 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+19:08:15.806 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:08:15.909 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+19:08:17.492 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+19:08:17.593 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:08:17.977 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+19:08:20.355 [restartedMain] INFO  c.b.productos.apiExterna.ApiClient - Status code: 200 OK
+19:08:20.358 [restartedMain] INFO  c.b.productos.apiExterna.ApiClient - Respuesta de la API: CategoryDTO(id=1, code=GAS, name=Gastronomía, description=null, icon=<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_3874_1229" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+<rect width="20" height="20" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_3874_1229)">
+<path d="M14.3585 17.9168C14.2403 17.9168 14.1414 17.8769 14.0618 17.797C13.9822 17.7172 13.9424 17.6182 13.9424 17.5002V11.2502H13.2373C12.8671 11.2502 12.5502 11.1184 12.2865 10.8547C12.0229 10.5911 11.8911 10.2742 11.8911 9.90402V5.8335C11.8911 4.90508 12.1531 4.0827 12.6772 3.36635C13.2012 2.65 13.9007 2.23307 14.7757 2.11554V17.5002C14.7757 17.6182 14.7357 17.7172 14.6558 17.797C14.5758 17.8769 14.4767 17.9168 14.3585 17.9168ZM6.66617 17.9168C6.54795 17.9168 6.44905 17.8769 6.36947 17.797C6.28987 17.7172 6.25007 17.6182 6.25007 17.5002V10.388C5.60583 10.2897 5.06016 9.99429 4.61305 9.50177C4.16594 9.00924 3.94238 8.40614 3.94238 7.69248V2.50016C3.94238 2.38211 3.98236 2.28315 4.06232 2.20329C4.14229 2.12343 4.24139 2.0835 4.35961 2.0835C4.47782 2.0835 4.57672 2.12343 4.65632 2.20329C4.73592 2.28315 4.77572 2.38211 4.77572 2.50016V7.69248H6.25007V2.50016C6.25007 2.38211 6.29006 2.28315 6.37003 2.20329C6.44999 2.12343 6.54908 2.0835 6.6673 2.0835C6.78552 2.0835 6.88442 2.12343 6.96401 2.20329C7.04361 2.28315 7.0834 2.38211 7.0834 2.50016V7.69248H8.55776V2.50016C8.55776 2.38211 8.59774 2.28315 8.67772 2.20329C8.75769 2.12343 8.85678 2.0835 8.97499 2.0835C9.09321 2.0835 9.19212 2.12343 9.27172 2.20329C9.3513 2.28315 9.39109 2.38211 9.39109 2.50016V7.69248C9.39109 8.40614 9.16754 9.00924 8.72042 9.50177C8.27331 9.99429 7.72764 10.2897 7.0834 10.388V17.5002C7.0834 17.6182 7.04342 17.7172 6.96345 17.797C6.88349 17.8769 6.7844 17.9168 6.66617 17.9168Z" fill="#868BC3"/>
+</g>
+</svg>)
+19:08:20.826 [restartedMain] INFO  c.b.productos.job.CategorySyncJob - Categorías sincronizadas correctamente desde la API.
+19:08:20.874 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+19:08:21.395 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+19:08:21.410 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+19:08:21.481 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+19:08:21.493 [restartedMain] INFO  c.b.productos.ProductosApplication - Started ProductosApplication in 11.767 seconds (process running for 17.796)
+19:08:32.278 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+19:08:32.664 [SpringApplicationShutdownHook] WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+19:08:32.665 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19:34:27.076 [restartedMain] INFO  c.b.productos.ProductosApplication - Starting ProductosApplication using Java 17.0.4.1 with PID 4088 (C:\Users\franc\OneDrive\Escritorio\challenge-bricks\productos\target\classes started by franc in C:\Users\franc\OneDrive\Escritorio\challenge-bricks\productos)
+19:34:27.085 [restartedMain] INFO  c.b.productos.ProductosApplication - No active profile set, falling back to 1 default profile: "default"
+19:34:27.167 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+19:34:27.167 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+19:34:29.895 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:34:30.086 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 155 ms. Found 2 JPA repository interfaces.
+19:34:31.963 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+19:34:31.978 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+19:34:31.983 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:34:31.983 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+19:34:32.160 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:34:32.161 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4992 ms
+19:34:32.207 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:34:32.566 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:ProductoDB user=ADMIN
+19:34:32.568 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:34:32.582 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:ProductoDB'
+19:34:32.800 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:34:32.951 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.24.Final
+19:34:32.956 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+19:34:33.512 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:34:33.604 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+19:34:35.525 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+19:34:35.634 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:34:36.033 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+19:34:38.018 [restartedMain] INFO  c.b.productos.apiExterna.ApiClient - Status code: 200 OK
+19:34:38.020 [restartedMain] INFO  c.b.productos.apiExterna.ApiClient - Respuesta de la API: CategoryDTO(id=1, code=GAS, name=Gastronomía, description=null, icon=<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_3874_1229" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+<rect width="20" height="20" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_3874_1229)">
+<path d="M14.3585 17.9168C14.2403 17.9168 14.1414 17.8769 14.0618 17.797C13.9822 17.7172 13.9424 17.6182 13.9424 17.5002V11.2502H13.2373C12.8671 11.2502 12.5502 11.1184 12.2865 10.8547C12.0229 10.5911 11.8911 10.2742 11.8911 9.90402V5.8335C11.8911 4.90508 12.1531 4.0827 12.6772 3.36635C13.2012 2.65 13.9007 2.23307 14.7757 2.11554V17.5002C14.7757 17.6182 14.7357 17.7172 14.6558 17.797C14.5758 17.8769 14.4767 17.9168 14.3585 17.9168ZM6.66617 17.9168C6.54795 17.9168 6.44905 17.8769 6.36947 17.797C6.28987 17.7172 6.25007 17.6182 6.25007 17.5002V10.388C5.60583 10.2897 5.06016 9.99429 4.61305 9.50177C4.16594 9.00924 3.94238 8.40614 3.94238 7.69248V2.50016C3.94238 2.38211 3.98236 2.28315 4.06232 2.20329C4.14229 2.12343 4.24139 2.0835 4.35961 2.0835C4.47782 2.0835 4.57672 2.12343 4.65632 2.20329C4.73592 2.28315 4.77572 2.38211 4.77572 2.50016V7.69248H6.25007V2.50016C6.25007 2.38211 6.29006 2.28315 6.37003 2.20329C6.44999 2.12343 6.54908 2.0835 6.6673 2.0835C6.78552 2.0835 6.88442 2.12343 6.96401 2.20329C7.04361 2.28315 7.0834 2.38211 7.0834 2.50016V7.69248H8.55776V2.50016C8.55776 2.38211 8.59774 2.28315 8.67772 2.20329C8.75769 2.12343 8.85678 2.0835 8.97499 2.0835C9.09321 2.0835 9.19212 2.12343 9.27172 2.20329C9.3513 2.28315 9.39109 2.38211 9.39109 2.50016V7.69248C9.39109 8.40614 9.16754 9.00924 8.72042 9.50177C8.27331 9.99429 7.72764 10.2897 7.0834 10.388V17.5002C7.0834 17.6182 7.04342 17.7172 6.96345 17.797C6.88349 17.8769 6.7844 17.9168 6.66617 17.9168Z" fill="#868BC3"/>
+</g>
+</svg>)
+19:34:38.477 [restartedMain] INFO  c.b.productos.job.CategorySyncJob - Categorías sincronizadas correctamente desde la API.
+19:34:38.518 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+19:34:39.248 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+19:34:39.268 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+19:34:39.336 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+19:34:39.348 [restartedMain] INFO  c.b.productos.ProductosApplication - Started ProductosApplication in 13.242 seconds (process running for 15.564)
+19:43:03.332 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+19:43:03.332 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+19:43:03.333 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+19:43:03.348 [http-nio-8082-exec-2] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' is not supported]
+19:43:19.170 [http-nio-8082-exec-8] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' is not supported]
+19:43:36.282 [http-nio-8082-exec-1] INFO  c.b.p.controller.ProductController - Eliminando producto con ID: 2
+19:43:36.382 [http-nio-8082-exec-1] WARN  c.b.productos.service.ProductService - No se encontró el producto con ID: 2
+19:43:36.383 [http-nio-8082-exec-1] WARN  c.b.p.controller.ProductController - No se encontró ningún producto con el ID: 2
+19:43:39.847 [http-nio-8082-exec-9] INFO  c.b.p.controller.ProductController - Eliminando producto con ID: 1
+19:43:39.898 [http-nio-8082-exec-9] INFO  c.b.productos.service.ProductService - Producto eliminado con éxito con ID: 1
+19:58:31.558 [restartedMain] INFO  c.b.productos.ProductosApplication - Starting ProductosApplication using Java 17.0.4.1 with PID 13264 (C:\Users\franc\OneDrive\Escritorio\challenge-bricks\productos\target\classes started by franc in C:\Users\franc\OneDrive\Escritorio\challenge-bricks\productos)
+19:58:31.567 [restartedMain] INFO  c.b.productos.ProductosApplication - No active profile set, falling back to 1 default profile: "default"
+19:58:31.677 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+19:58:31.677 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+19:58:35.203 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:58:36.804 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1574 ms. Found 2 JPA repository interfaces.
+19:58:39.571 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+19:58:39.590 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+19:58:39.596 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:58:39.597 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+19:58:39.842 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:58:39.845 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 8164 ms
+19:58:39.894 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:58:40.262 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:ProductoDB user=ADMIN
+19:58:40.265 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:58:40.281 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:ProductoDB'
+19:58:41.167 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:58:41.342 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.24.Final
+19:58:41.345 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+19:58:41.929 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:58:42.030 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+19:58:44.751 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+19:58:44.879 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:58:45.935 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+19:58:48.905 [restartedMain] INFO  c.b.productos.apiExterna.ApiClient - Status code: 200 OK
+19:58:48.911 [restartedMain] INFO  c.b.productos.apiExterna.ApiClient - Respuesta de la API: CategoryDTO(id=1, code=GAS, name=Gastronomía, description=null, icon=<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_3874_1229" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+<rect width="20" height="20" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_3874_1229)">
+<path d="M14.3585 17.9168C14.2403 17.9168 14.1414 17.8769 14.0618 17.797C13.9822 17.7172 13.9424 17.6182 13.9424 17.5002V11.2502H13.2373C12.8671 11.2502 12.5502 11.1184 12.2865 10.8547C12.0229 10.5911 11.8911 10.2742 11.8911 9.90402V5.8335C11.8911 4.90508 12.1531 4.0827 12.6772 3.36635C13.2012 2.65 13.9007 2.23307 14.7757 2.11554V17.5002C14.7757 17.6182 14.7357 17.7172 14.6558 17.797C14.5758 17.8769 14.4767 17.9168 14.3585 17.9168ZM6.66617 17.9168C6.54795 17.9168 6.44905 17.8769 6.36947 17.797C6.28987 17.7172 6.25007 17.6182 6.25007 17.5002V10.388C5.60583 10.2897 5.06016 9.99429 4.61305 9.50177C4.16594 9.00924 3.94238 8.40614 3.94238 7.69248V2.50016C3.94238 2.38211 3.98236 2.28315 4.06232 2.20329C4.14229 2.12343 4.24139 2.0835 4.35961 2.0835C4.47782 2.0835 4.57672 2.12343 4.65632 2.20329C4.73592 2.28315 4.77572 2.38211 4.77572 2.50016V7.69248H6.25007V2.50016C6.25007 2.38211 6.29006 2.28315 6.37003 2.20329C6.44999 2.12343 6.54908 2.0835 6.6673 2.0835C6.78552 2.0835 6.88442 2.12343 6.96401 2.20329C7.04361 2.28315 7.0834 2.38211 7.0834 2.50016V7.69248H8.55776V2.50016C8.55776 2.38211 8.59774 2.28315 8.67772 2.20329C8.75769 2.12343 8.85678 2.0835 8.97499 2.0835C9.09321 2.0835 9.19212 2.12343 9.27172 2.20329C9.3513 2.28315 9.39109 2.38211 9.39109 2.50016V7.69248C9.39109 8.40614 9.16754 9.00924 8.72042 9.50177C8.27331 9.99429 7.72764 10.2897 7.0834 10.388V17.5002C7.0834 17.6182 7.04342 17.7172 6.96345 17.797C6.88349 17.8769 6.7844 17.9168 6.66617 17.9168Z" fill="#868BC3"/>
+</g>
+</svg>)
+19:58:49.387 [restartedMain] INFO  c.b.productos.job.CategorySyncJob - Categorías sincronizadas correctamente desde la API.
+19:58:49.439 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+19:58:49.964 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+19:58:49.977 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+19:58:50.066 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+19:58:50.082 [restartedMain] INFO  c.b.productos.ProductosApplication - Started ProductosApplication in 20.066 seconds (process running for 21.857)
+20:01:53.354 [http-nio-8082-exec-3] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+20:01:53.355 [http-nio-8082-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+20:01:53.356 [http-nio-8082-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+20:01:53.403 [http-nio-8082-exec-3] INFO  c.b.p.controller.ProductController - Eliminando producto con ID: 2
+20:01:53.475 [http-nio-8082-exec-3] WARN  c.b.productos.service.ProductService - No se encontró el producto con ID: 2
+20:01:53.476 [http-nio-8082-exec-3] WARN  c.b.p.controller.ProductController - No se encontró ningún producto con el ID: 2
+20:02:16.373 [http-nio-8082-exec-6] INFO  c.b.productos.service.ProductService - Obteniendo todos los productos...
+20:02:16.550 [http-nio-8082-exec-6] INFO  c.b.productos.service.ProductService - Se obtuvieron 1 productos
+20:02:40.155 [http-nio-8082-exec-5] INFO  c.b.p.controller.ProductController - Obteniendo producto con ID: 1
+20:02:50.381 [http-nio-8082-exec-4] INFO  c.b.p.controller.ProductController - Obteniendo producto con ID: 2
+20:02:50.383 [http-nio-8082-exec-4] WARN  c.b.productos.service.ProductService - No se encontró ningún producto con el ID: 2
+20:02:50.383 [http-nio-8082-exec-4] WARN  c.b.p.controller.ProductController - No se encontró ningún producto con el ID: 2
+20:02:58.619 [http-nio-8082-exec-2] INFO  c.b.p.controller.ProductController - Eliminando producto con ID: 1
+20:02:58.646 [http-nio-8082-exec-2] INFO  c.b.productos.service.ProductService - Producto eliminado con éxito con ID: 1
+20:03:34.641 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'

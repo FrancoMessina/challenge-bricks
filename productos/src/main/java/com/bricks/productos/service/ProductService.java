@@ -51,4 +51,14 @@ public class ProductService implements IProductService {
             throw new ProductNotFoundException("No se encontró ningún producto con el ID: " + id);
         }
     }
+    public void deleteProductById(Long id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> {
+                    logger.warn("No se encontró el producto con ID: {}", id);
+                    return new ProductNotFoundException("Producto no encontrado con ID: " + id);
+                });
+
+        productRepository.delete(product);
+        logger.info("Producto eliminado con éxito con ID: {}", id);
+    }
 }

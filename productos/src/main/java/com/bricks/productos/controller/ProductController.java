@@ -24,7 +24,7 @@ public class ProductController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     @GetMapping
-    public ResponseEntity<Page<ProductDTO>> getAllProducts(
+    public ResponseEntity<?> getAllProducts(
             @RequestParam(required = false) String name,
             @RequestParam(required = false) BigDecimal price,
             @RequestParam(required = false) Integer stock,
@@ -36,23 +36,39 @@ public class ProductController {
         Page<ProductDTO> products = productService.getAllProducts(name, price, stock, categoryName, pageable);
 
         if (products.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontraron productos.");
         }
-        return new ResponseEntity<>(products, HttpStatus.OK);
-
+        return ResponseEntity.ok(products);
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id) {
+    public ResponseEntity<?> getProductById(@PathVariable Long id) {
         try {
             logger.info("Obteniendo producto con ID: {}", id);
             ProductDTO productDTO = productService.getProductById(id);
-            return new ResponseEntity<>(productDTO, HttpStatus.OK);
+            return ResponseEntity.ok(productDTO);
         } catch (ProductNotFoundException e) {
             logger.warn("No se encontró ningún producto con el ID: {}", id);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró ningún producto con el ID: " + id);
         } catch (Exception e) {
             logger.error("Se produjo un error al obtener el producto con ID: {}", id, e);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Se produjo un error al obtener el producto con ID: " + id);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteProductById(@PathVariable Long id) {
+        try {
+            logger.info("Eliminando producto con ID: {}", id);
+            productService.deleteProductById(id);
+            String message = "Producto con ID " + id + " eliminado correctamente.";
+            return ResponseEntity.ok().body(message);
+        } catch (ProductNotFoundException e) {
+            logger.warn("No se encontró ningún producto con el ID: {}", id);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró ningún producto con el ID: " + id);
+        } catch (Exception e) {
+            logger.error("Se produjo un error al eliminar el producto con ID: {}", id, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Se produjo un error al eliminar el producto con ID: " + id);
         }
     }
 }
