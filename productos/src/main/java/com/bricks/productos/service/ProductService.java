@@ -1,6 +1,7 @@
 package com.bricks.productos.service;
 
 import com.bricks.productos.DTO.ProductDTO;
+import com.bricks.productos.exception.ProductNotFoundException;
 import com.bricks.productos.mapper.ProductMapper;
 import com.bricks.productos.model.Product;
 import com.bricks.productos.repository.IProductRepository;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @Service
 public class ProductService implements IProductService {
@@ -37,5 +39,16 @@ public class ProductService implements IProductService {
         logger.info("Se obtuvieron {} productos", products.getTotalElements());
         return products.map(productMapper::toDTO);
 
+    }
+
+    public ProductDTO getProductById(Long id) {
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        if (optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+            return productMapper.toDTO(product);
+        } else {
+            logger.warn("No se encontró ningún producto con el ID: {}", id);
+            throw new ProductNotFoundException("No se encontró ningún producto con el ID: " + id);
+        }
     }
 }

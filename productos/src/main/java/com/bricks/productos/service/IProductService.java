@@ -9,5 +9,5 @@ import java.math.BigDecimal;
 
 public interface IProductService {
     Page<ProductDTO> getAllProducts(String name, BigDecimal price, Integer stock, String categoryName, Pageable pageable);
-
+    ProductDTO getProductById(Long id);
 }

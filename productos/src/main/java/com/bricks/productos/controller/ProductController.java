@@ -1,18 +1,18 @@
 package com.bricks.productos.controller;
 
 import com.bricks.productos.DTO.ProductDTO;
+import com.bricks.productos.exception.ProductNotFoundException;
 import com.bricks.productos.model.Product;
 import com.bricks.productos.service.IProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
@@ -22,6 +22,7 @@ public class ProductController {
     @Autowired
     private IProductService productService;
 
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     @GetMapping
     public ResponseEntity<Page<ProductDTO>> getAllProducts(
             @RequestParam(required = false) String name,
@@ -39,5 +40,19 @@ public class ProductController {
         }
         return new ResponseEntity<>(products, HttpStatus.OK);
 
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id) {
+        try {
+            logger.info("Obteniendo producto con ID: {}", id);
+            ProductDTO productDTO = productService.getProductById(id);
+            return new ResponseEntity<>(productDTO, HttpStatus.OK);
+        } catch (ProductNotFoundException e) {
+            logger.warn("No se encontró ningún producto con el ID: {}", id);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            logger.error("Se produjo un error al obtener el producto con ID: {}", id, e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
