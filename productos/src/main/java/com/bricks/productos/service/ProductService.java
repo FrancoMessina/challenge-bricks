@@ -84,4 +84,43 @@ public class ProductService implements IProductService {
         // Mapear la entidad de producto guardada a un DTO de producto y devolverlo
         return productMapper.toDTO(savedProduct);
     }
+    @Override
+    public ProductDTO updateProduct(Long id, ProductDTO productDTO) {
+        // Verificar si el producto existe
+        Product existingProduct = productRepository.findById(id)
+                .orElseThrow(() -> {
+                    logger.warn("No se encontró ningún producto con el ID: {}", id);
+                    return new ProductNotFoundException("No se encontró ningún producto con el ID: " + id);
+                });
+
+        // Verificar si la categoría del producto existe
+        validateCategoryExists(productDTO.getCategory());
+
+        // Mapear el DTO de producto actualizado a la entidad de producto existente
+        Product updatedProduct = productMapper.toEntity(productDTO);
+
+        // Actualizar los campos del producto existente con los del producto actualizado
+        existingProduct.setName(updatedProduct.getName());
+        existingProduct.setPrice(updatedProduct.getPrice());
+        existingProduct.setStock(updatedProduct.getStock());
+        existingProduct.setCategory(updatedProduct.getCategory());
+
+        // Guardar el producto actualizado en la base de datos
+        updatedProduct = productRepository.save(existingProduct);
+
+        // Mapear la entidad de producto actualizada a un DTO y devolverlo
+        return productMapper.toDTO(updatedProduct);
+    }
+
+
+    private void validateCategoryExists(CategoryDTO categoryDTO) {
+        if (categoryDTO != null && categoryDTO.getId() != null) {
+            Optional<Category> optionalCategory = Optional.ofNullable(categoryService.getCategoryById(categoryDTO.getId()));
+            if (optionalCategory.isEmpty()) {
+                logger.warn("No se encontró ningúna categoría con el ID: {}", categoryDTO.getId());
+                throw new CategoryNotFoundException("La categoría con ID " + categoryDTO.getId() + " no existe.");
+            }
+        }
+    }
+
 }

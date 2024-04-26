@@ -86,4 +86,24 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Se produjo un error al crear el producto.");
         }
     }
+    @PutMapping
+    public ResponseEntity<?> updateProduct(@RequestBody ProductDTO productDTO) {
+        try {
+            Long productId = productDTO.getId();
+            logger.info("Actualizando producto con ID {}: {}", productId, productDTO);
+            ProductDTO updatedProductDTO = productService.updateProduct(productId, productDTO);
+            return ResponseEntity.ok(updatedProductDTO);
+        } catch (ProductNotFoundException e) {
+            logger.error("No se encontró ningún producto con el ID: {}", productDTO.getId());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró ningún producto con el ID: " + productDTO.getId());
+        } catch (CategoryNotFoundException e) {
+            logger.error("La categoría asociada al producto no existe: {}", productDTO.getCategory().getId());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La categoría asociada al producto no existe: " + productDTO.getCategory().getId());
+        } catch (Exception e) {
+            logger.error("Se produjo un error al actualizar el producto con ID: {}", productDTO.getId(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Se produjo un error al actualizar el producto.");
+        }
+    }
+
+
 }
