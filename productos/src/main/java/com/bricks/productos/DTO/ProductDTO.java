@@ -10,5 +10,5 @@ public class ProductDTO {
     private String name;
     private BigDecimal price;
     private int stock;
-    private CategoryDTO category; // Aquí se utiliza el DTO de Category
+    private CategoryDTO category;
 }

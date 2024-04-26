@@ -1,6 +1,7 @@
 package com.bricks.productos.controller;
 
 import com.bricks.productos.DTO.ProductDTO;
+import com.bricks.productos.exception.CategoryNotFoundException;
 import com.bricks.productos.exception.ProductNotFoundException;
 import com.bricks.productos.model.Product;
 import com.bricks.productos.service.IProductService;
@@ -69,6 +70,20 @@ public class ProductController {
         } catch (Exception e) {
             logger.error("Se produjo un error al eliminar el producto con ID: {}", id, e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Se produjo un error al eliminar el producto con ID: " + id);
+        }
+    }
+    @PostMapping
+    public ResponseEntity<?> createProduct(@RequestBody ProductDTO productDTO) {
+        try {
+            logger.info("Creando un nuevo producto: {}", productDTO);
+            ProductDTO createdProductDTO = productService.createProduct(productDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdProductDTO);
+        } catch (CategoryNotFoundException e) {
+            logger.error("La categoría asociada al producto no existe: {}", productDTO.getCategory().getId());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La categoría asociada al producto no existe: " + productDTO.getCategory().getId());
+        } catch (Exception e) {
+            logger.error("Se produjo un error al crear el producto: {}", productDTO, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Se produjo un error al crear el producto.");
         }
     }
 }

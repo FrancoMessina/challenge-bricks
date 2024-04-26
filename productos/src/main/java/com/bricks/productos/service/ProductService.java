@@ -1,8 +1,11 @@
 package com.bricks.productos.service;
 
+import com.bricks.productos.DTO.CategoryDTO;
 import com.bricks.productos.DTO.ProductDTO;
+import com.bricks.productos.exception.CategoryNotFoundException;
 import com.bricks.productos.exception.ProductNotFoundException;
 import com.bricks.productos.mapper.ProductMapper;
+import com.bricks.productos.model.Category;
 import com.bricks.productos.model.Product;
 import com.bricks.productos.repository.IProductRepository;
 import org.slf4j.Logger;
@@ -22,7 +25,8 @@ public class ProductService implements IProductService {
     private  ProductMapper productMapper;
     @Autowired
     private IProductRepository productRepository;
-
+    @Autowired
+    private ICategoryService categoryService;
     public Page<ProductDTO> getAllProducts(String name, BigDecimal price, Integer stock, String categoryName, Pageable pageable) {
         logger.info("Obteniendo todos los productos...");
 
@@ -60,5 +64,24 @@ public class ProductService implements IProductService {
 
         productRepository.delete(product);
         logger.info("Producto eliminado con éxito con ID: {}", id);
+    }
+    public ProductDTO createProduct(ProductDTO productDTO) {
+        // Verificar si la categoría del producto existe
+        CategoryDTO categoryDTO = productDTO.getCategory();
+        if (categoryDTO != null && categoryDTO.getId() != null) {
+            Optional<Category> optionalCategory = Optional.ofNullable(categoryService.getCategoryById(categoryDTO.getId()));
+            if (optionalCategory.isEmpty()) {
+                throw new CategoryNotFoundException("La categoría con ID " + categoryDTO.getId() + " no existe.");
+            }
+        }
+
+        // Mapear el DTO de producto a una entidad de producto
+        Product product = productMapper.toEntity(productDTO);
+
+        // Guardar el producto en la base de datos
+        Product savedProduct = productRepository.save(product);
+
+        // Mapear la entidad de producto guardada a un DTO de producto y devolverlo
+        return productMapper.toDTO(savedProduct);
     }
 }

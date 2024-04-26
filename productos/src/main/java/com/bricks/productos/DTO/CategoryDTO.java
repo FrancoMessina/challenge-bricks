@@ -9,5 +9,5 @@ public class CategoryDTO {
     private String name;
     private String description;
     private String icon;
-    // Getters y setters
+
 }

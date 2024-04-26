@@ -10,8 +10,8 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "products")
 @Data
-@AllArgsConstructor // Este es el constructor que acepta todos los argumentos
-@NoArgsConstructor // Este es el constructor sin argumentos
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

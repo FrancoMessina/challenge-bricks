@@ -11,8 +11,8 @@ import java.util.List;
 @Entity
 @Table(name = "categories")
 @Data
-@AllArgsConstructor // Este es el constructor que acepta todos los argumentos
-@NoArgsConstructor // Este es el constructor sin argumentos
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,5 +45,4 @@ public class Category {
         product.setCategory(null);
     }
 
-    // Getters y setters
 }
