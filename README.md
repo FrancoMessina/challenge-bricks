@@ -26,21 +26,11 @@ Esta API proporciona servicios para administrar los productos de un comercio, in
 | ------ | ----------------- | ----------------------------------------------------------------- | ------------------------------------------------------------ |
 | GET    | /product          | Obtiene el listado de productos (filtro por name, price, stock y category) (Paginado) | `GET /product?name=producto1&price=10.00&stock=20&category=Gastronomía&page=0&size=10` |
 | GET    | /product/{id}     | Obtiene un producto por ID                                        | `GET /product/1`                                             |
-| POST   | /product          | Crea un nuevo producto                                             | `POST /product` con cuerpo: { "name": "Pava Electrica", "price": 25.00, "stock": 50, {
-        "id": 1,
-        "code": "GAS",
-        "name": "Gastronomía",
-        "description": null,
-        "icon": "icono.svg"
-    } } |
+| POST   | /product          | Crea un nuevo producto                                             | `POST /product` con cuerpo: { "name": "Pava Electrica", "price": 25.00, "stock": 50, { "id": 1, "code": "GAS", "name": "Gastronomía", "description": null, "icon": "icono.svg" } } |
 | DELETE | /product/{id}     | Elimina un producto por ID                                        | `DELETE /product/1`                                          |
-| PUT    | /product/{id}     | Actualiza un producto por ID                                      | `PUT /product` con cuerpo: { "name": "Producto Actualizado", "price": 30.00, "stock": 100, "category": { "id": 2,
-        "code": "VIA",
-        "name": "Viajes",
-        "description": null,
-        "icon": "icono.svg"
-    } } |
+| PUT    | /product    | Actualiza un producto por ID                                      | `PUT /product` con cuerpo: {id:"1", "name": "Producto Actualizado", "price": 30.00, "stock": 100, { "id": 2, "code": "VIA", "name": "Viajes", "description": null, "icon": "icono.svg" } } |
 | GET    | /category         | Obtiene el listado de categorías                                  | `GET /category`                                               |
+
 
 
 ## Actualización de Categorías
