@@ -30,7 +30,7 @@ public class CategorySyncJob {
         this.syncCategoriesFromApi();
     }
 
-    @Scheduled(cron = "0 0 */2 * * *") // Ejecutar cada 2 horas // cambiar este cron manualemente
+    @Scheduled(cron = "0 0 */3 * * *") // Ejecutar cada 3 horas // cambiar este cron manualemente
     public void syncCategoriesFromApi() {
         List<CategoryDTO> categories = apiClient.fetchDataFromApiBricks();
 

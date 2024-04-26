@@ -14,7 +14,7 @@ Esta API proporciona servicios para administrar los productos de un comercio, in
 
 1. Clona el repositorio desde GitHub o GitLab.
 2. Abre el proyecto en tu IDE favorito.
-3. Ejecuta el proyecto utilizando Gradle.
+3. Ejecuta el proyecto utilizando Maven.
 4. Accede a la API desde el navegador o herramientas como Postman usando la URL [http://localhost:8082](http://localhost:8082).
 5. Swagger URL [http://localhost:8082/doc/swagger-ui/index.html](http://localhost:8082/doc/swagger-ui/index.html).
 
@@ -31,7 +31,7 @@ Esta API proporciona servicios para administrar los productos de un comercio, in
 | PUT    | /product    | Actualiza un producto por ID                                      | `PUT /product` con cuerpo: {id:"1", "name": "Producto Actualizado", "price": 30.00, "stock": 100, { "id": 2, "code": "VIA", "name": "Viajes", "description": null, "icon": "icono.svg" } } |
 | GET    | /category         | Obtiene el listado de categorías                                  | `GET /category`                                               |
 
-
+![alt text](image.png)
 
 ## Actualización de Categorías
 
